@@ -5,12 +5,12 @@ const app = express();
 
 let PORT=null;
 
-app.listen(5372);
+app.listen(4567);
 
 
 
 app.get("/", function (req, res) {
-  res.send("Ping");
+  res.send("Pong");
   setTimeout(myPingPong, 500);
 });
 
@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
 
 function myPingPong() {
 
-  fetch("http://localhost:" + PORT)
+  fetch("http://172.17.0.4:" + PORT)
     .then((res) => res.text())
     .then((text) => console.log(text));
 }
@@ -28,7 +28,7 @@ function myPingPong() {
 
 
 async function fetchPort() {
-    PORT = await fetch("http://localhost:8080/serv1").then((res) =>
+    PORT = await fetch("http://172.17.0.3:8080/serv2").then((res) =>
     res.text()
   );
 
