@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
 
 function myPingPong() {
 
-  fetch("http://172.17.0.2:" + PORT)
+  fetch("http://172.16.8.36:" + PORT)
     .then((res) => res.text())
     .then((text) => console.log(text));
 }
@@ -28,7 +28,7 @@ function myPingPong() {
 
 
 async function fetchPort() {
-    PORT = await fetch("http://172.17.0.3:8080/serv1").then((res) =>
+    PORT = await fetch("http://172.16.8.36:8080/serv1").then((res) =>
     res.text()
   );
 
