@@ -3,46 +3,19 @@ const express = require("express");
 
 const app = express();
 
-let PORT=null;
-
 app.listen(4567);
 
 
-
 app.get("/", function (req, res) {
-  res.send("Pong");
+  console.log("Ponged");
   setTimeout(myPingPong, 500);
 });
 
 
 
 function myPingPong() {
-
-  fetch("http://172.16.8.36:" + PORT)
-    .then((res) => res.text())
-    .then((text) => console.log(text));
+  fetch("http://172.16.8.36:1111/serv2")
 }
 
 
-
-
-
-async function fetchPort() {
-    PORT = await fetch("http://172.16.8.36:8080/serv2").then((res) =>
-    res.text()
-  );
-
-  console.log("boop"+PORT);
-
-  console.log("restart");
-  myPingPong(PORT);
-}
-
-
-
-
-
-if(PORT==null){
-  fetchPort();
-
-}
+myPingPong();
